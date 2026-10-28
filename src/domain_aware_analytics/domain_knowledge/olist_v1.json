@@ -1,0 +1,77 @@
+{
+  "version": "olist_domain_v1",
+  "domain": "Olist e-commerce",
+  "curation_note": "Curated from existing project definitions, not from evaluation questions, execution results or Gold. source_curated records project provenance, not external business sign-off. Match definitions to the user's requested population and disclose material ambiguity; never override an explicit question.",
+  "entries": [
+    {
+      "id": "customer_identity",
+      "kind": "entity",
+      "title": "Real customer identity across orders",
+      "keywords": ["customer", "customers", "retention", "repeat", "unique customer", "客户", "复购", "留存"],
+      "references": ["customers.customer_id", "customers.customer_unique_id"],
+      "content": "customers.customer_unique_id identifies a real customer across orders. customer_id is an order-associated customer record, not the cross-order person identity. Select the entity required by the question before COUNT or window partitioning; distinct customer_id is not interchangeable with distinct customer_unique_id.",
+      "review_status": "source_curated",
+      "provenance": {"source_file": "data_dictionary.md", "source_section": "Customer Identity", "basis": "existing_project_definition", "note": "Existing project definition; not a new inference from column-name similarity."}
+    },
+    {
+      "id": "purchase_time",
+      "kind": "time",
+      "title": "Purchase cohorts and complete calendar boundaries",
+      "keywords": ["purchase", "purchased", "purchase time", "year", "month", "quarter", "购买", "下单", "月份", "年度"],
+      "references": ["orders.order_purchase_timestamp", "orders.order_delivered_customer_date"],
+      "content": "For purchase cohorts use orders.order_purchase_timestamp; delivery time is orders.order_delivered_customer_date and represents a different event. Full calendar ranges are normally inclusive start and exclusive next-period start. Treat these timestamp-without-time-zone values as naive calendar timestamps unless a separately reviewed timezone policy exists. Do not infer a time range when the question specifies all history.",
+      "review_status": "source_curated",
+      "provenance": {"source_file": "data_dictionary.md; AGENTS.md", "source_section": "Order Dates; Data and SQL correctness rules", "basis": "existing_project_definition", "note": "Canonical purchase field and interval policy from existing maintained project documents."}
+    },
+    {
+      "id": "merchandise_revenue",
+      "kind": "metric",
+      "title": "Merchandise revenue and freight exclusion",
+      "keywords": ["revenue", "merchandise", "sales value", "freight", "gmv", "收入", "销售额", "商品金额", "运费"],
+      "references": ["order_items.order_id", "order_items.price", "order_items.freight_value"],
+      "content": "Project merchandise revenue is the sum of order_items.price at item grain before any joining that could multiply items. Freight is order_items.freight_value. Excluding freight means omit it from the monetary sum, not filter freight_value to zero. Payment value is a different measure. Apply only the status, time and population filters requested or explicitly agreed; delivered is not an automatic revenue filter.",
+      "review_status": "source_curated",
+      "provenance": {"source_file": "data_dictionary.md", "source_section": "Revenue; Order Granularity", "basis": "existing_project_definition", "note": "Merchandise definition is a business convention, not a test answer or query template."}
+    },
+    {
+      "id": "order_aov",
+      "kind": "metric",
+      "title": "Registered merchandise AOV denominator and order grain",
+      "keywords": ["aov", "average order value", "order value", "客单价", "平均订单金额"],
+      "references": ["orders.order_id", "order_items.order_id", "order_items.order_item_id", "order_items.price"],
+      "content": "The existing order_aov registry definition first sums merchandise price within each eligible order, then averages these complete order samples. Its denominator population is item-backed eligible orders, and freight is excluded. It rejects missing/null prices or incomplete order samples. This denominator is a specific registered definition: if the question requires all orders including orders without item rows, do not silently substitute this AOV population. Keep numerator and denominator tied to the same status, time and business population and preserve comparison direction.",
+      "review_status": "source_curated",
+      "provenance": {"source_file": "metric_registry_v1.py", "source_section": "ORDER_AOV", "basis": "existing_project_definition", "note": "Transcribed existing registry numerator/denominator/grain; no compiled recipe or SQL supplied."}
+    },
+    {
+      "id": "order_child_fanout",
+      "kind": "relationship",
+      "title": "Order, item, payment and review cardinality",
+      "keywords": ["join", "orders", "payment", "payments", "review", "reviews", "items", "订单", "支付", "评论", "重复"],
+      "references": ["orders.order_id", "order_items.order_id", "payments.order_id", "reviews.order_id"],
+      "content": "orders is order-level; order_items is item-level. A single order may have several item, payment and review rows. Raw joins between child tables can multiply each other's measures even when joining on order_id. Establish the question's entity grain; where necessary aggregate each child to that grain before combining, or use a justified entity-distinct count. Declared business relationships do not prove actual PK/UNIQUE/FK constraints; inspect trusted database metadata or independent execution checks before claiming cardinality is verified.",
+      "review_status": "source_curated",
+      "provenance": {"source_file": "data_dictionary.md; semantic_layer.json", "source_section": "Order Granularity; relationships", "basis": "existing_project_definition", "note": "Known order-child relationship semantics, explicitly separated from physical constraint evidence."}
+    },
+    {
+      "id": "delivered_status",
+      "kind": "assumption",
+      "title": "Delivered status differs from non-NULL delivery timestamp",
+      "keywords": ["delivered", "delivery status", "order status", "status", "已送达", "交付", "状态"],
+      "references": ["orders.order_status", "orders.order_delivered_customer_date"],
+      "content": "In the project, delivered means orders.order_status equals delivered. A non-NULL delivery timestamp is not equivalent to that status. Use the actual delivery timestamp for delivery-time analysis. Do not add a delivered-only filter if the user asks for all orders; denominator status populations must follow the question.",
+      "review_status": "source_curated",
+      "provenance": {"source_file": "data_dictionary.md", "source_section": "Delivered Order Status", "basis": "existing_project_definition", "note": "Existing status convention; does not authorize adding an unrequested filter."}
+    },
+    {
+      "id": "purchase_retention",
+      "kind": "metric",
+      "title": "Repeat-purchase retention and full eligible history",
+      "keywords": ["retention", "repeat purchase", "first purchase", "previous purchase", "sequence", "复购", "留存", "首单", "前一单"],
+      "references": ["customers.customer_unique_id", "customers.customer_id", "orders.customer_id", "orders.order_id", "orders.order_purchase_timestamp"],
+      "content": "Use real customer identity and purchase timestamps. Determine first or adjacent eligible orders across the full eligible history before applying the cohort/current-event output date filter. A repeat event is a distinct order; if the question requires strictly later timestamps, equal timestamps do not qualify. A deterministic event-ID tie-break makes SQL repeatable but does not itself establish business event order. Apply the agreed eligibility/status policy consistently, allow repeat observation beyond cohort-period boundaries, and disclose incomplete observation windows. Do not assume a retention duration or reporting unit when the question has not defined one.",
+      "review_status": "source_curated",
+      "provenance": {"source_file": "data_dictionary.md; AGENTS.md", "source_section": "Customer Retention; Data and SQL correctness rules", "basis": "existing_project_definition", "note": "General event/cohort policy without a fixed test duration, year, target result or SQL recipe."}
+    }
+  ]
+}

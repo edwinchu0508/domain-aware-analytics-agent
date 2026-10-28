@@ -1,0 +1,117 @@
+{
+  "publication_note": "Separate source snapshot. No original Git history, Gold, private questions, data or raw traces included.",
+  "transformations": [
+    "Package-relative imports only in the nine core modules; source function bodies retained.",
+    "Extracted only active budget/observer/transport helpers; unused legacy backend adapters omitted.",
+    "Extracted E run_one and accounting/error helpers; private benchmark loaders and paths omitted.",
+    "Offline test imports and dictionary path adapted; SDK fixture extracted without historical benchmark imports.",
+    "Portable database adapter and CLI added; these are publication plumbing, not evaluated algorithm changes."
+  ],
+  "sources": [
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/analytics_agent_v1.py",
+      "sha256": "3778176e062da97ec09ccdc4424ef817d1317b56f43bf1ea0b3815db34c33e89"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/analytics_safety_v1.py",
+      "sha256": "232863083bfef09bea8c491838bc5aa763fcc8b3be3f9995134966cfaefc36e1"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/analytics_observation_v1.py",
+      "sha256": "f57d463a3bb118c5dec22976b9aae945b1d628a9325a70dd6cbc1e3a95744eb5"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/domain_knowledge_v1.py",
+      "sha256": "010d3c188bbeeb5923eafe5df22730e5982916552a77f301c69573c00f7cbf28"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/sql_attempt_control_v3.py",
+      "sha256": "488f3264ce4a293c28b5f7aaf85c79e2ea96d99bcb86e2c7314cac76a988c2bb"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/sql_reviewer.py",
+      "sha256": "f99136c78e8c68e20f7c1f919e0d422a12aeb5f5f2d27d6ec68887df2b11df41"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/general_sql_validation_v3.py",
+      "sha256": "61ec698bb93fefec046b5b9a6618fed6b862b7fdf267cdb86c2fcc6fc5e57e4c"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/conditional_aggregation_v3.py",
+      "sha256": "091ea398573dfc9cc7242eedac5a65183d07c7b4f49195f764e9dfd86ea5cc15"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/structured_temporal_v2.py",
+      "sha256": "02ace2d675d0129cef22513f82f2133b3ba1cca0089a23c063964a8207fbd9c4"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/domain_knowledge/olist_v1.json",
+      "sha256": "b67293686175b3aac9e0a7918af11bb56f52b976f139ff31d16bfa1bdb017d89"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/blind_evaluation_v1/common.py",
+      "sha256": "95de63b1942d9f682eb4ca23eae4e0d4a0911f1c9344606b20314eaccc0865e9"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/blind_evaluation_v1/observer.py",
+      "sha256": "94d216c0469b2b2b7623dc630b270405540967030076e24b741561c2ce59a5c5"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/blind_evaluation_deploy_v1/runtime.py",
+      "sha256": "2c354e1dd72441d0c86aee6d7c014ceb14d550c7b801faf1b3d5bb2141dfa3a8"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/blind_evaluation_deploy_v1/policy.py",
+      "sha256": "73448bfcdce3dfc3d40743e09a3638035e6a721d3495a780f2c904063e38979f"
+    },
+    {
+      "source": "experiment_e_v1/runner.py",
+      "sha256": "f453ea53e4806618c3a74f438e40f107cace893d3c3d35b74c5b2c25a180220a"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/specialized_evaluation_v1/protocol.py",
+      "sha256": "27b3c43ff0563d50d1545e74203b3212c57d749bd011328cd3a603bb96f3681b"
+    },
+    {
+      "source": "experiment_e_v1/prompts.json",
+      "sha256": "54eadd544eeecee9ae2c3a65331850119129714e48b9a0e9bf524ba8e6a68f30"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/CONFIG.json",
+      "sha256": "f9ab8e623a4c1e419161c76d52121c2ca675d44d184458ea776cfb9c596eea2f"
+    },
+    {
+      "source": "agent_validation_v2/test_error_recovery_v2.py",
+      "sha256": "ccd3a506ccd39e25c7b49a91e025136559b5c26c2ee6fbebab09daddf469dcd4"
+    },
+    {
+      "source": "agent_validation_v2/test_analytics_workflow_v1.py",
+      "sha256": "42707f74de70e01ba3888efd757b2346ea65fad31f51403c1414ebdc09e1807e"
+    },
+    {
+      "source": "agent_validation_v2/test_evidence_lifecycle_v1.py",
+      "sha256": "6095c661022a69f18bb1566c00943220955b34bf630b78d5377e64d1111971fb"
+    },
+    {
+      "source": "agent_validation_v2/test_domain_knowledge_v1.py",
+      "sha256": "e203e75f125f819e46d3a68cc7e32a30a12965bc0327157d3ae730fd8913a81f"
+    },
+    {
+      "source": "agent_validation_v2/test_analytics_safety_v1.py",
+      "sha256": "5559e3303df58fce6661277701a360de010a8ada7b404212cb048a5f5baf7d2b"
+    },
+    {
+      "source": "agent_validation_v2/test_analytics_reliability_v1.py",
+      "sha256": "ff97b1e2acfe0a9ae60df9bcd0dd4faf5ab72109592f7891a05f1652203471df"
+    },
+    {
+      "source": "agent_validation_v2/test_analytics_observation_v1.py",
+      "sha256": "67acd469051716821e43509bc4735688565b007db6d70a818e56412bc6f3b97e"
+    },
+    {
+      "source": "checkpoints/specialized_abcd_20261027_003/runtime/agent_backend_v2.py",
+      "sha256": "3a70f0d76e98377a181f5180cfae3fe0e8bea8bbe0a563ac94801844e21fb481",
+      "extraction": "Only four metadata/read-only adapter functions; no old Agent or Planner imported"
+    }
+  ]
+}

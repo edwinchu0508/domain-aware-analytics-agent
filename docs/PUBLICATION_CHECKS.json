@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "offline_tests": 114,
+  "offline_demo": "actual SDK + scripted responses + isolated SQLite; passed",
+  "paid_api_requests": 0,
+  "postgres_queries": 0,
+  "core_ast_parity_except_package_imports": {
+    "analytics_agent_v1": true,
+    "analytics_safety_v1": true,
+    "analytics_observation_v1": true,
+    "domain_knowledge_v1": true,
+    "sql_attempt_control_v3": true,
+    "sql_reviewer": true,
+    "general_sql_validation_v3": true,
+    "conditional_aggregation_v3": true,
+    "structured_temporal_v2": true
+  },
+  "frozen_files_unchanged": 54,
+  "dictionary_content_unchanged": true,
+  "private_artifacts_included": false,
+  "clean_environment_install": "NOT_PERFORMED",
+  "new_live_packaging_test": "NOT_PERFORMED",
+  "github_cli": "NOT_INSTALLED",
+  "github_authentication": "NOT_CHECKED_CLI_UNAVAILABLE",
+  "wheel_build": "PASS",
+  "wheel_import_and_json_assets": "PASS",
+  "staged_security_scan": "PASS; no detected secret/private-path/artifact patterns",
+  "manual_staged_inventory_review": "PASS; code, docs, synthetic fixtures and aggregate measurements only",
+  "git_version": "2.38.0.windows.1",
+  "license_added": false
+}

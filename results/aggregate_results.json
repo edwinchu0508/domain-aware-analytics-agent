@@ -1,0 +1,82 @@
+{
+  "source_summary_sha256": "cfaadef3ecd446fa0c91b80e9b69ca2ad34572f2d094e7611c9f63dcf7edddb7",
+  "note": "Aggregate measurements only, no private questions, SQL, reference values, predictions or scoring payloads.",
+  "actual_billed_cost": "UNKNOWN",
+  "variants": [
+    {
+      "variant": "A",
+      "assigned": 34,
+      "correct_main": 30,
+      "correct_sensitivity": 32,
+      "completed": 33,
+      "failed": 1,
+      "unsupported": 0,
+      "requests": 108,
+      "tokens": 202962,
+      "estimated_cost_usd": 0.3046153,
+      "mean_estimated_cost_usd": 0.008959273529411765,
+      "mean_latency_seconds": 10.76094117649,
+      "cost_per_correct_main_usd": 0.010153843333333332
+    },
+    {
+      "variant": "B",
+      "assigned": 34,
+      "correct_main": 31,
+      "correct_sensitivity": 33,
+      "completed": 34,
+      "failed": 0,
+      "unsupported": 0,
+      "requests": 108,
+      "tokens": 251326,
+      "estimated_cost_usd": 0.3366014,
+      "mean_estimated_cost_usd": 0.009900041176470588,
+      "mean_latency_seconds": 11.08405882355,
+      "cost_per_correct_main_usd": 0.010858109677419354
+    },
+    {
+      "variant": "C",
+      "assigned": 34,
+      "correct_main": 28,
+      "correct_sensitivity": 30,
+      "completed": 31,
+      "failed": 3,
+      "unsupported": 0,
+      "requests": 174,
+      "tokens": 458863,
+      "estimated_cost_usd": 1.1252857,
+      "mean_estimated_cost_usd": 0.03309663823529412,
+      "mean_latency_seconds": 31.37588235294,
+      "cost_per_correct_main_usd": 0.040188775
+    },
+    {
+      "variant": "D",
+      "assigned": 34,
+      "correct_main": 31,
+      "correct_sensitivity": 33,
+      "completed": 34,
+      "failed": 0,
+      "unsupported": 0,
+      "requests": 179,
+      "tokens": 539979,
+      "estimated_cost_usd": 1.2048772,
+      "mean_estimated_cost_usd": 0.03543756470588236,
+      "mean_latency_seconds": 31.78035294118,
+      "cost_per_correct_main_usd": 0.03886700645161291
+    },
+    {
+      "variant": "E",
+      "assigned": 34,
+      "correct_main": 30,
+      "correct_sensitivity": 31,
+      "completed": 32,
+      "failed": 0,
+      "unsupported": 2,
+      "requests": 66,
+      "tokens": 41966,
+      "estimated_cost_usd": 0.123508,
+      "mean_estimated_cost_usd": 0.003632588235294118,
+      "mean_latency_seconds": 5.3281764706,
+      "cost_per_correct_main_usd": 0.004116933333333334
+    }
+  ]
+}

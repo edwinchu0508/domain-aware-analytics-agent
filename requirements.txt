@@ -1,0 +1,8 @@
+# Direct runtime dependencies from the evaluated environment (Python 3.11.17).
+# This is not a full platform/Conda artifact lock; see docs/REPRODUCIBILITY.md.
+openai==3.35.1
+openai-agents==0.24.0
+pydantic==2.14.1
+psycopg[binary]==3.3.6
+sqlglot==30.23.0
+httpx2==2.15.1

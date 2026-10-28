@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "domain-aware-analytics-agent"
+version = "0.1.0"
+description = "A read-only SQL analytics agent with controlled dictionary and verification ablations"
+readme = "README.md"
+requires-python = ">=3.11,<3.12"
+dynamic = ["dependencies"]
+
+[project.scripts]
+analytics-agent = "domain_aware_analytics.cli:main"
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+domain_aware_analytics = ["*.json", "domain_knowledge/*.json"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src", "tests"]
+testpaths = ["tests"]
+addopts = "-ra"
